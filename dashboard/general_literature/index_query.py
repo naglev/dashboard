@@ -6,7 +6,7 @@ from whoosh.index import open_dir
 def search_index(search_text, pagenum):
 
     basedir = os.path.dirname(__file__)
-    indexdir = os.path.join(basedir, "indexdir")
+    indexdir = os.path.join(basedir, "indexing", "indexdir")
 
     ix = open_dir(indexdir)
 
