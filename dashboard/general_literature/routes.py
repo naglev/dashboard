@@ -4,7 +4,7 @@ from .index_query import search_index
 
 
 basedir = os.path.dirname(__file__)
-thumbnaildir = os.path.join(basedir, "thumbnails")
+thumbnaildir = os.path.join(basedir, "indexing", "thumbnails")
 
 
 general_literature = Blueprint('general_literature', __name__)
