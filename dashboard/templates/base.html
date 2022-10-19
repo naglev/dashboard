@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
+  <title>Company's webpage</title>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.ico') }}">
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+
+  <!-- Boxicons -->
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename='dashboard.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{url_for('home.index')}}">Company</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link {{'active' if active_page == 'home' else ''}}" aria-current="page"
+                href="{{url_for('home.index')}}">
+                <i class='bx bx-home'></i>
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{'active' if active_page == 'license_status' else ''}}"
+                href="{{url_for('license_status.main')}}">
+                <i class='bx bxs-pie-chart-alt-2'></i>
+                License status
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{'active' if active_page == 'general_literature' else ''}}"
+                href="{{url_for('general_literature.main')}}">
+                <i class='bx bx-book'></i>
+                General literature
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://192.168.1.1:80/" target="blank">
+                <i class='bx bxl-git'></i>
+                Company Git
+              </a>
+            </li>
+          </ul>
+
+
+        </div>
+      </nav>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        {% block content %}
+
+        {% endblock %}
+      </main>
+    </div>
+  </div>
+
+
+  <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+    integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+    integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

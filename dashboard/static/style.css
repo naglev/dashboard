@@ -1,0 +1,90 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.borderless td,
+.borderless th {
+    border: none;
+}
+
+.users {
+    display: none;
+}
+
+.hide-field {
+    display: none;
+}
+
+.table-docdata {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.table-docdata tr {
+    height: 2em;
+}
+
+.table-docdata td:nth-child(1) {
+    width: 100px;
+}
+
+.show-path {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.path-cell {
+    cursor: pointer;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+.btn-link {
+    text-decoration: none;
+}
+
+.modal-dialog {
+    max-width: max-content;
+}
+
+.img-thumbnail,
+.occupied-row {
+    cursor: pointer;
+}
+
+.card {
+    /* border: 0; */
+    border-bottom: 0;
+    border-radius: 0;
+}
+
+/* .card-own {
+    border: solid;
+    border-width: 0 3px 0 3px;
+} */
+
+/* .card:last-of-type {
+    background-color: aqua;
+} */
+
+.card:nth-child(1) {
+    border-radius: .25rem .25rem 0 0;
+}
+
+.card:nth-last-child(2) {
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0 0 .25rem .25rem;
+}

@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% set active_page = "general_literature" %}
+{% block content %}
+
+<div class="container py-4">
+  <h3>General literature</h3>
+
+  <!-- Search field -->
+  <div class="p-5 my-4 bg-light border rounded-3">
+    <div class="container-fluid">
+
+      <form action="{{url_for('general_literature.main', page=1)}}">
+
+        <!-- Search text input -->
+        <div class="mb-4">
+          <div class="input-group">
+            <input type="text" name="q" class="form-control" id="search_field" placeholder="Search"
+              value="{{qs_dict['q']}}">
+            <button class="btn btn-primary" type="submit"><i class='bx bx-search'></i></button>
+          </div>
+        </div>
+
+        <!-- Radio buttons -->
+        <!-- <div class="row mt-4">
+          <div class="col-3">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="flexRadioDefault1" name="language" value="eng" checked>
+              <label class="form-check-label" for="flexRadioDefault1">
+                English
+              </label>
+            </div>
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="radio" id="flexRadioDefault2" name="language" value="hun">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Hungarian
+              </label>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="phrase">
+              <label class="form-check-label" for="flexCheckDefault">
+                Phrase
+              </label>
+            </div>
+          </div>
+        </div> -->
+
+
+        <!-- Advanced search -->
+        <button type="button" class="btn btn-link d-block mb-3 p-0" id="advanced-search-button">Advanced
+          search <i class='bx bx-chevron-down'></i></button>
+
+        <div class="row gx-5 hide-field" id="advanced-search-field">
+          <div class="col-3">
+            <label for="search_field" class="form-label">Year</label>
+            <div class="input-group">
+              <input type="number" class="form-control" placeholder="from" name="year_from"
+                value="{{qs_dict['year_from']}}" min="0">
+              <span class="input-group-text bg-transparent border-0">-</span>
+              <input type="number" class="form-control" placeholder="to" name="year_to" value="{{qs_dict['year_to']}}"
+                min="0">
+            </div>
+          </div>
+
+          <div class="col-3">
+            <label for="search_field" class="form-label">Pages</label>
+            <div class="input-group">
+              <input type="number" class="form-control" placeholder="from" name="pages_from"
+                value="{{qs_dict['pages_from']}}" min="0">
+              <span class="input-group-text bg-transparent border-0">-</span>
+              <input type="number" class="form-control" placeholder="to" name="pages_to" value="{{qs_dict['pages_to']}}"
+                min="0">
+            </div>
+          </div>
+
+          <div class="col-3">
+            <label for="search_field" class="form-label">File size (MB)</label>
+            <div class="input-group">
+              <input type="number" class="form-control" placeholder="from" name="size_from"
+                value="{{qs_dict['size_from']}}" min="0">
+              <span class="input-group-text bg-transparent border-0">-</span>
+              <input type="number" class="form-control" placeholder="to" name="size_to" value="{{qs_dict['size_to']}}"
+                min="0">
+            </div>
+          </div>
+
+          <!-- <div class="col-auto">
+            <label for="exampleInputEmail1" class="form-label">Slop</label>
+            <input type="number" class="form-control" id="exampleInputEmail1" min="1" max="10" value="1">
+          </div> -->
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Pagination info -->
+  {% if pagination %}
+  <div class="px-3 mb-4">
+    {% if pagination['total']>0 %}
+    Page {{pagination['current_page']}} of {{pagination['pagecount']}}<br>
+    Showing results {{pagination['offset']+1}}-{{pagination['offset']+pagination['pagelen']}} of
+    {{pagination['total']}}
+
+    {% else %}
+    0 result
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <div class="document-list">
+    <!-- Listed documents -->
+    {% for doc in hits %}
+    <div class="card card-own px-4">
+      <div class="row">
+        <div class="col-9">
+          <div class="card-body">
+            <h4>{{doc['title']}}</h4>
+            <table class="table-docdata">
+              <tbody>
+                <tr>
+                  <td>Path:</td>
+                  <td class="path-cell show-path">{{doc['path']}}</td>
+                </tr>
+                <tr>
+                  <td>Pages:</td>
+                  <td>{{doc['page_count']}}</td>
+                </tr>
+                <tr>
+                  <td>Year:</td>
+                  <td>{{'–' if doc['date']==0 else doc['date']}}</td>
+                </tr>
+                <tr>
+                  <td>Size:</td>
+                  <td>{{'%.2f'|format(doc['file_size'])}} MB</td>
+                </tr>
+              </tbody>
+            </table>
+            <a class="btn btn-primary mt-3" href="{{url_for('general_literature.send_document', doc_path=doc['path'])}}"
+              target="_blank">Open</a>
+          </div>
+        </div>
+        <div class="col-3 d-flex align-items-center justify-content-center" id="gallery" data-bs-toggle="modal"
+          data-bs-target="#a{{doc['thumbnail_uid']}}">
+          <img class="img-thumbnail"
+            src="{{url_for('general_literature.send_thumbnail', filename=doc['thumbnail_uid'])}}.png" alt=""
+            width="160">
+        </div>
+      </div>
+
+    </div>
+    <div class="modal fade" id="a{{doc['thumbnail_uid']}}" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <img class="mx-auto d-block"
+              src="{{url_for('general_literature.send_thumbnail', filename=doc['thumbnail_uid'])}}.png" alt=""
+              width="600">
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Pagination -->
+  {% if pagination and pagination['total']>0 %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center mt-4">
+      <li class="page-item {% if pagination['current_page']==1 %}disabled{% endif %}"><a class="page-link"
+          href="{{url_for('general_literature.main', q=request.args['q'], page=pagination['current_page']-1)}}">Previous</a>
+      </li>
+      {% for pagenum in pagination['navbar'] %}
+      {% if pagenum %}
+      {% if pagenum == pagination['current_page'] %}
+      <li class="page-item active"><span class="page-link">{{pagenum}}</span></li>
+      {% else %}
+      <li class="page-item"><a class="page-link"
+          href="{{url_for('general_literature.main', q=request.args['q'], page=pagenum)}}">{{pagenum}}</a></li>
+      {% endif %}
+      {% else %}
+      <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+      {% endif %}
+      {% endfor %}
+      <li class="page-item {% if pagination['current_page']==pagination['pagecount'] %}disabled{% endif %}"><a
+          class="page-link"
+          href="{{url_for('general_literature.main', q=request.args['q'], page=pagination['current_page']+1)}}">Next</a>
+      </li>
+    </ul>
+  </nav>
+  {% endif %}
+
+</div>
+
+{% endblock %}

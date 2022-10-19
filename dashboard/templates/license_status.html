@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+{% set active_page = "license_status" %}
+{% block content %}
+<div class="container py-4">
+
+  <div class="row gx-5">
+    <div class="col-6">
+      <div class="row">
+
+        <!-- software1 -->
+        <div class="col-12 pb-5">
+          <h3>software1</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Feature name</th>
+                <th class="text-center" scope="col">Total licenses</th>
+                <th class="text-center" scope="col">Occupied licenses</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in software1 %}
+              <!-- List only occupied licenses -->
+              {% if row[2]>0 %}
+              <tr class="feature {{'occupied-row' if row[2] > 0}}">
+                <td>{{row[0]}}</td>
+                <td class="text-center">{{row[1]}}</td>
+                <td class="text-center">{{row[2]}}</td>
+              </tr>
+              <!-- List users -->
+              {% if row|length>3 %}
+              <tr class="users">
+                <td colspan="3">
+                  <table class="table mb-0 borderless">
+                    <tbody>
+                      {% for user in row[3:] %}
+                      <tr>
+                        <td>{{user[0]}}</td>
+                        <td>{{user[1]}}</td>
+                        <td>{{user[2]}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              {% endif %}
+              {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- software2 -->
+        <div class="col-12">
+          <h3>software2</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Feature name</th>
+                <th class="text-center" scope="col">Total licenses</th>
+                <th class="text-center" scope="col">Occupied licenses</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in software1 %}
+              <tr class="feature {{'occupied-row' if row[2] > 0}}">
+                <td>{{row[0]}}</td>
+                <td class="text-center">{{row[1]}}</td>
+                <td class="text-center">{{row[2]}}</td>
+              </tr>
+              {% if row|length>3 %}
+              <tr class="users">
+                <td colspan="4">
+                  <table class="table mb-0 borderless">
+                    <tbody>
+                      {% for user in row[3:] %}
+                      <tr>
+                        <td>{{user[0]}}</td>
+                        <td>{{user[1]}}</td>
+                        <td>{{user[2]}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="row">
+
+        <!-- software3 -->
+        <div class="col-12 pb-5">
+          <h3>software3</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Feature name</th>
+                <th class="text-center" scope="col">Total licenses</th>
+                <th class="text-center" scope="col">Occupied licenses</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- software3 feature always visible -->
+              <tr class="feature {{'occupied-row' if software3[0][2] > 0}}">
+                <td>{{software3[0][0]}}</td>
+                <td class="text-center">{{software3[0][1]}}</td>
+                <td class="text-center">{{software3[0][2]}}</td>
+              </tr>
+              {% if software3[0]|length>3 %}
+              <tr class="users">
+                <td colspan="4">
+                  <table class="table mb-0 borderless">
+                    <tbody>
+                      {% for user in software3[0][3:] %}
+                      <tr>
+                        <td>{{user[0]}}</td>
+                        <td>{{user[1]}}</td>
+                        <td>{{user[2]}}</td>
+                        <td>{{user[3]}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              {% endif %}
+
+
+              {% for row in software3[1:] %}
+              {% if row[2]>0 %}
+              <tr class="feature">
+                <td>{{row[0]}}</td>
+                <td class="text-center">{{row[1]}}</td>
+                <td class="text-center">{{row[2]}}</td>
+              </tr>
+              {% if row|length>3 %}
+              <tr class="users">
+                <td colspan="4">
+                  <table class="table mb-0 borderless">
+                    <tbody>
+                      {% for user in row[3:] %}
+                      <tr>
+                        <td>{{user[0]}}</td>
+                        <td>{{user[1]}}</td>
+                        <td>{{user[2]}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              {% endif %}
+              {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- software4 -->
+        <div class="col-12">
+          <h3>software4</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Feature name</th>
+                <th class="text-center" scope="col">Total licenses</th>
+                <th class="text-center" scope="col">Occupied licenses</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in software4 %}
+              <tr class="feature {{'occupied-row' if row[2] > 0}}">
+                <td>{{row[0]}}</td>
+                <td class="text-center">{{row[1]}}</td>
+                <td class="text-center">{{row[2]}}</td>
+              </tr>
+              {% if row|length>3 %}
+              <tr class="users">
+                <td colspan="4">
+                  <table class="table mb-0 borderless">
+                    <tbody>
+                      {% for user in row[3:] %}
+                      <tr>
+                        <td>{{user[0]}}</td>
+                        <td>{{user[1]}}</td>
+                        <td>{{user[2]}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
