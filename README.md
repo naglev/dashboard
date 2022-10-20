@@ -11,7 +11,7 @@ Languages, libraries and frameworks used for
 ## General literature
 There is a large collection (20,000+) of documents (books, articles, documentations etc.) on a server in a complex folder structure. They differ not only in file type but also in language. As this collection grows it becomes less useable because the users have to browse numerous folders until they find relevant document(s). General literature delivers a solution for this problem which is based on a search engine and provides full-text search.
 
-![General literature](media/general_literature_1000x1000.png)
+![General literature](media/general_literature.png)
 
 This application can be split into three main parts by functionality:
 * Indexer
@@ -42,4 +42,4 @@ Provides a user interface to display license status of different engineering sof
 
 As it is mentioned, it is a public version of the project so only the placeholders are being shown in the screenshot below.
 
-![License_status](media/license_status_1000.png)
+![License_status](media/license_status.png)
