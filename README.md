@@ -1,4 +1,3 @@
-# dashboard
 
 This is a public version of the project, hence the lack of commits.
 ## About the project
@@ -19,11 +18,12 @@ This application can be split into three main parts by functionality:
 * Index query
 
 ### Indexer
-The <code>indexer.py</code> and the <code>processor.py</code> are responsible for processing the documents, creating the language dependent indexes and maintaining the indexes automatically. In order to run the program the user needs to enter the path of a root directory whose documents need to be indexed and then use a task scheduler to execute indexer.py periodically.
+The <code>indexer.py</code> and the <code>processor.py</code> are responsible for processing the documents, creating the language dependent indexes and maintaining the indexes automatically. In order to run the program the user needs to enter the path of a root directory whose documents need to be indexed and then use a task scheduler to execute <code>indexer.py</code> periodically.
+
 Features of the Indexer:
 -	Handles duplicates so documents can only appear once in the database
 -	Detects the language of the documents and sorts them accordingly
--	Currently one file type (pdf) and two languages are handled (English, Hungarian), but the list can be easily extended due to the modular structure of the Indexer
+-	Currently one file type (pdf) and two languages are handled (English, Hungarian), but the list can be easily extended thanks to the modular structure of the Indexer
 -	Can process scanned pdfs with OCR and multithreading
 -	If an indexed document has been moved since the last indexing, it updates the path
 -	If an indexed document has been deleted since the last indexing, it deletes the document from the database
@@ -34,8 +34,8 @@ Features of the Indexer:
 
 ### Index (database)
 Search engines store data in a form of index to provide fast searchability. The database is maintained by the Indexer and accessed by the Index query.
-### Index query:
-The user make queries from the UI and gets back the relevant and ranked results in a structured way.
+### Index query
+The user make queries from the UI and receives relevant and ranked results in a structured way.
 
 ## License status
 Provides a user interface to display license status of different engineering softwares that use FlexLM servers. The server’s response is plain text, so the extraction of the necessary information is done by using regular expressions and some logic.
