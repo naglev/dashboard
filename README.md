@@ -18,7 +18,7 @@ This application can be split into three main parts by functionality:
 * Index query
 
 ### Indexer
-The <code>indexer.py</code> and the <code>processor.py</code> are responsible for processing the documents, creating the language dependent indexes and maintaining the indexes automatically. In order to run the program the user needs to enter the path of a root directory whose documents need to be indexed and then use a task scheduler to execute <code>indexer.py</code> periodically.
+The [<code>indexer.py</code>](https://github.com/naglev/dashboard/blob/main/dashboard/general_literature/indexing/indexer.py) and the [<code>processor.py</code>](https://github.com/naglev/dashboard/blob/main/dashboard/general_literature/indexing/processor.py) are responsible for processing the documents, creating the language dependent indexes and maintaining the indexes automatically. In order to run the program the user needs to enter the path of a root directory whose documents need to be indexed and then use a task scheduler to execute [<code>indexer.py</code>](https://github.com/naglev/dashboard/blob/main/dashboard/general_literature/indexing/indexer.py) periodically.
 
 Features of the Indexer:
 -	Handles duplicates so documents can only appear once in the database
