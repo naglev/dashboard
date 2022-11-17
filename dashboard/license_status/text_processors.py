@@ -11,7 +11,7 @@ def software1_text_processor(server_response):
 
     # Regex patterns
     pattern_feature = re.compile(r'Users of (?P<feature>\w+):  \(Total of (?P<issued>\d+) licenses? issued;  Total of (?P<used>\d+)')
-    pattern_user = re.compile(r'(?P<user>[a-z-]{1,}) (?P<user_comp>BU2\w\d{4}).corp.knorr-bremse.com')
+    pattern_user = re.compile(r'(?P<user>[a-z-]{1,}) (?P<user_comp>BU2\w\d{4}).company.com')
 
     license_list = []
 
