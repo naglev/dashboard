@@ -1,7 +1,7 @@
 
 This is a public version of the project, hence the lack of commits.
 ## About the project
-A website that is meant to make engineers’ daily work easier. It serves as a collection of engineering tools. Currently it contains two pages: License status, General literature, (Home).
+A website that is created to make engineers’ daily work more efficient. It serves as a collection of engineering tools. Currently it contains two pages: License status, General literature, (Home).
 
 Languages, libraries and frameworks used for
 * Frontend: HTML, CSS, jQuery, Bootstrap
