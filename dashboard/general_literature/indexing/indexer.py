@@ -9,7 +9,7 @@ from whoosh.qparser import QueryParser
 
 
 class Indexer:
-    """Docstring"""
+    """_summary_"""
 
     def __init__(self):
         self.processors = {
@@ -32,7 +32,7 @@ class Indexer:
             self.check_indexes()
 
     def index_document(self, path):
-        """Docstring"""
+        """_summary_"""
 
         if self.in_index(path) == True:
             return
