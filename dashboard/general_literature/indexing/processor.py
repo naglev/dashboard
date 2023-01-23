@@ -9,7 +9,7 @@ import config_ix
 
 
 class Processor(metaclass=ABCMeta):
-    """Docstring"""
+    """_summary_"""
 
     @abstractmethod
     def extract_metadata(self):
@@ -43,7 +43,7 @@ class Processor(metaclass=ABCMeta):
             return file_hash.hexdigest()
             
     def process_document(self, path):
-        """Docstring"""
+        """_summary_"""
 
         document = Document(path)
         file_name, file_size, page_count, creation_date = self.extract_metadata(path)
@@ -59,7 +59,7 @@ class Processor(metaclass=ABCMeta):
 
 
 class ProcessorPDF(Processor):
-    """Docstring"""
+    """_summary_"""
 
     type = 'PDF'
 
@@ -103,7 +103,7 @@ class ProcessorPDF(Processor):
                         poppler_path=config_ix.POPPLER_PATH)
     
     def process_scanned_pdf(self, pdf_path):
-        """Docstring"""
+        """_summary_"""
 
         from PIL import Image
         import concurrent.futures
@@ -183,26 +183,26 @@ class ProcessorPDF(Processor):
 
 
 class ProcessorPPT(Processor):
-    """Docstring"""
+    """_summary_"""
 
     type = 'PPTX'
 
 
 class ProcessorDOC(Processor):
-    """Docstring"""
+    """_summary_"""
 
     type = 'DOCX'
 
 
 class Document:
-    """Docstring"""
+    """_summary_"""
 
     def __init__(self, path):
         self.path = path
         self.file_name = None
         self.file_size = None
         self.extension = None         
-        self.creation_date = str()     # ezt felülvizsgálni
+        self.creation_date = str()
         self.page_count = None
         self.language = None
         self.hash = None
